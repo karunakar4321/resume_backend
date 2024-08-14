@@ -48,7 +48,7 @@ class UploadResume(APIView):
     def post(self, request, *args, **kwargs):
         serializer = PDFUploadSerializer(data=request.data)
         if serializer.is_valid():
-            uploaded_file = serializer.validated_data['file']
+            uploaded_file = serializer.validated_data['Awsresume.pdf']
             print(uploaded_file.name)
 
         pdf_reader = PdfReader(uploaded_file)
@@ -57,7 +57,7 @@ class UploadResume(APIView):
         for page_num in range(num_pages):
             page = pdf_reader.pages[page_num]
             text += page.extract_text() or ""
-
+        
         sections = separate_sections(text)
         print("sections", sections)
         return JsonResponse(sections)

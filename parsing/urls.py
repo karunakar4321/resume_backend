@@ -23,7 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",home,name="home"),
-    path("resumeParse",UploadResume.as_view(),name="upload_resume"),
+    path("resumeParse/",UploadResume.as_view(),name="upload_resume"),
 ]
 
 
